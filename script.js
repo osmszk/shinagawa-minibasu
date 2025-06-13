@@ -1,24 +1,53 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Get all draggable team elements
-  const teams = document.querySelectorAll(".team");
-  const teamsLists = document.querySelectorAll(".teams-list");
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
 
+  // Add event listeners to tab buttons
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.dataset.tab;
+      switchTab(targetTab);
+    });
+  });
+
+  // Tab switching function
+  function switchTab(targetTab) {
+    // Remove active class from all buttons and contents
+    tabButtons.forEach((btn) => btn.classList.remove("active"));
+    tabContents.forEach((content) => content.classList.remove("active"));
+
+    // Add active class to clicked button and corresponding content
+    document.querySelector(`[data-tab="${targetTab}"]`).classList.add("active");
+    document.getElementById(`${targetTab}-teams`).classList.add("active");
+  }
+
+  // Drag and drop functionality
   let draggedTeam = null;
   let draggedTeamPlaceholder = null;
 
-  // Add event listeners to each team
-  teams.forEach((team) => {
-    team.addEventListener("dragstart", handleDragStart);
-    team.addEventListener("dragend", handleDragEnd);
-  });
+  // Initialize drag and drop for all teams
+  initializeDragAndDrop();
 
-  // Add event listeners to each teams list (drop targets)
-  teamsLists.forEach((teamsList) => {
-    teamsList.addEventListener("dragover", handleDragOver);
-    teamsList.addEventListener("dragenter", handleDragEnter);
-    teamsList.addEventListener("dragleave", handleDragLeave);
-    teamsList.addEventListener("drop", handleDrop);
-  });
+  function initializeDragAndDrop() {
+    // Get all draggable team elements
+    const teams = document.querySelectorAll(".team");
+    const teamsLists = document.querySelectorAll(".teams-list");
+
+    // Add event listeners to each team
+    teams.forEach((team) => {
+      team.addEventListener("dragstart", handleDragStart);
+      team.addEventListener("dragend", handleDragEnd);
+    });
+
+    // Add event listeners to each teams list (drop targets)
+    teamsLists.forEach((teamsList) => {
+      teamsList.addEventListener("dragover", handleDragOver);
+      teamsList.addEventListener("dragenter", handleDragEnter);
+      teamsList.addEventListener("dragleave", handleDragLeave);
+      teamsList.addEventListener("drop", handleDrop);
+    });
+  }
 
   // Drag start handler
   function handleDragStart(e) {
@@ -109,6 +138,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // If no dragged team, exit
     if (!draggedTeam) return;
 
+    // Check if we're dropping within the same tab
+    const activeTab = document.querySelector(".tab-content.active");
+    const dropTargetTab = this.closest(".tab-content");
+
+    if (dropTargetTab !== activeTab) {
+      // Don't allow dropping across tabs
+      return;
+    }
+
     // Get the class of the drop target
     const targetClass = this.dataset.class;
 
@@ -172,13 +210,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to save the current arrangement
   // function saveTeamArrangement() {
-  //   const arrangement = {
-  //     A: [...document.querySelector('#class-a .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
-  //     B: [...document.querySelector('#class-b .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
-  //     C: [...document.querySelector('#class-c .teams-list').querySelectorAll('.team')].map(team => team.dataset.team)
+  //   const maleArrangement = {
+  //     A: [...document.querySelector('#male-class-a .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
+  //     B: [...document.querySelector('#male-class-b .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
+  //     C: [...document.querySelector('#male-class-c .teams-list').querySelectorAll('.team')].map(team => team.dataset.team)
   //   };
   //
-  //   console.log('Current arrangement:', arrangement);
+  //   const femaleArrangement = {
+  //     A: [...document.querySelector('#female-class-a .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
+  //     B: [...document.querySelector('#female-class-b .teams-list').querySelectorAll('.team')].map(team => team.dataset.team),
+  //     C: [...document.querySelector('#female-class-c .teams-list').querySelectorAll('.team')].map(team => team.dataset.team)
+  //   };
+  //
+  //   console.log('Male arrangement:', maleArrangement);
+  //   console.log('Female arrangement:', femaleArrangement);
   //   // Here you could send this data to a server or save it to localStorage
   // }
 });

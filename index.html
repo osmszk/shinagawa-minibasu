@@ -8,41 +8,81 @@
   </head>
   <body>
     <header>
-      <h1>品川ミニバスチーム</h1>
+      <h1>品川ミニバスチーム分類</h1>
       <p>ドラッグ＆ドロップでチームを移動したり並べ替えたりできます</p>
     </header>
 
+    <div class="tab-container">
+      <button class="tab-button active" data-tab="male">男子</button>
+      <button class="tab-button" data-tab="female">女子</button>
+    </div>
+
     <main class="container">
-      <div class="class-container" id="class-a">
-        <h2>クラスA</h2>
-        <div class="teams-list" data-class="A">
-          <div class="team" draggable="true" data-team="大原">大原</div>
-          <div class="team" draggable="true" data-team="品川">品川</div>
+      <!-- 男子データ -->
+      <div id="male-teams" class="tab-content active">
+        <div class="class-container" id="male-class-a">
+          <h2>クラスA</h2>
+          <div class="teams-list" data-class="A">
+            <div class="team" draggable="true" data-team="大原">大原</div>
+            <div class="team" draggable="true" data-team="品川">品川</div>
+          </div>
+        </div>
+
+        <div class="class-container" id="male-class-b">
+          <h2>クラスB</h2>
+          <div class="teams-list" data-class="B">
+            <div class="team" draggable="true" data-team="平塚">平塚</div>
+            <div class="team" draggable="true" data-team="伊藤">伊藤</div>
+            <div class="team" draggable="true" data-team="BMAC">BMAC</div>
+            <div class="team" draggable="true" data-team="UP STARTウィングス">
+              UP STARTウィングス
+            </div>
+            <div class="team" draggable="true" data-team="UP START鈴ヶ森">
+              UP START鈴ヶ森
+            </div>
+            <div class="team" draggable="true" data-team="UP START浜川">
+              UP START浜川
+            </div>
+          </div>
+        </div>
+
+        <div class="class-container" id="male-class-c">
+          <h2>クラスC</h2>
+          <div class="teams-list" data-class="C">
+            <div class="team" draggable="true" data-team="小山台">小山台</div>
+          </div>
         </div>
       </div>
 
-      <div class="class-container" id="class-b">
-        <h2>クラスB</h2>
-        <div class="teams-list" data-class="B">
-          <div class="team" draggable="true" data-team="平塚">平塚</div>
-          <div class="team" draggable="true" data-team="伊藤">伊藤</div>
-          <div class="team" draggable="true" data-team="BMAC">BMAC</div>
-          <div class="team" draggable="true" data-team="UP STARTウィングス">
-            UP STARTウィングス
-          </div>
-          <div class="team" draggable="true" data-team="UP START鈴ヶ森">
-            UP START鈴ヶ森
-          </div>
-          <div class="team" draggable="true" data-team="UP START浜川">
-            UP START浜川
+      <!-- 女子データ -->
+      <div id="female-teams" class="tab-content">
+        <div class="class-container" id="female-class-a">
+          <h2>クラスA</h2>
+          <div class="teams-list" data-class="A">
+            <div class="team" draggable="true" data-team="大原">大原</div>
+            <div class="team" draggable="true" data-team="品川">品川</div>
           </div>
         </div>
-      </div>
 
-      <div class="class-container" id="class-c">
-        <h2>クラスC</h2>
-        <div class="teams-list" data-class="C">
-          <div class="team" draggable="true" data-team="小山台">小山台</div>
+        <div class="class-container" id="female-class-b">
+          <h2>クラスB</h2>
+          <div class="teams-list" data-class="B">
+            <div class="team" draggable="true" data-team="平塚">平塚</div>
+            <div class="team" draggable="true" data-team="伊藤">伊藤</div>
+            <div class="team" draggable="true" data-team="UP START">
+              UP START
+            </div>
+            <div class="team" draggable="true" data-team="UP STARTルピナス">
+              UP STARTルピナス
+            </div>
+          </div>
+        </div>
+
+        <div class="class-container" id="female-class-c">
+          <h2>クラスC</h2>
+          <div class="teams-list" data-class="C">
+            <div class="team" draggable="true" data-team="小山台">小山台</div>
+          </div>
         </div>
       </div>
     </main>
