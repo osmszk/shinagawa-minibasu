@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>品川ミニバスチーム分類</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>品川ミニバスチーム分類</h1>
+      <p>ドラッグ＆ドロップでチームを移動したり並べ替えたりできます</p>
+    </header>
+
+    <main class="container">
+      <div class="class-container" id="class-a">
+        <h2>クラスA</h2>
+        <div class="teams-list" data-class="A">
+          <div class="team" draggable="true" data-team="大原">大原</div>
+          <div class="team" draggable="true" data-team="品川">品川</div>
+        </div>
+      </div>
+
+      <div class="class-container" id="class-b">
+        <h2>クラスB</h2>
+        <div class="teams-list" data-class="B">
+          <div class="team" draggable="true" data-team="平塚">平塚</div>
+          <div class="team" draggable="true" data-team="伊藤">伊藤</div>
+          <div class="team" draggable="true" data-team="BMAC">BMAC</div>
+          <div class="team" draggable="true" data-team="UP STARTウィングス">
+            UP STARTウィングス
+          </div>
+          <div class="team" draggable="true" data-team="UP START鈴ヶ森">
+            UP START鈴ヶ森
+          </div>
+          <div class="team" draggable="true" data-team="UP START浜川">
+            UP START浜川
+          </div>
+        </div>
+      </div>
+
+      <div class="class-container" id="class-c">
+        <h2>クラスC</h2>
+        <div class="teams-list" data-class="C">
+          <div class="team" draggable="true" data-team="小山台">小山台</div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
